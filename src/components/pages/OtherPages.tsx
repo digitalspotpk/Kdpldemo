@@ -1,43 +1,8 @@
 import { useState } from 'react';
-import { CalendarIcon, RadioIcon, TrophyIcon, PlusIcon, BellIcon, UsersIcon, BarChartIcon, HomeIcon, ShieldIcon, WhatsAppIcon } from '../ui';
+import { CalendarIcon, RadioIcon, TrophyIcon, PlusIcon, BellIcon, UsersIcon, BarChartIcon, ShieldIcon, WhatsAppIcon } from '../ui';
 import type { KDPLStore } from '../../store/useKDPLStore';
 
-// ─── DASHBOARD ───
-export function Dashboard({ store }: { store: KDPLStore }) {
-  const { state, navigate } = store;
-  const { tournament, teams, fixtures, liveMatch, players } = state;
-  const liveCount = fixtures.filter(f => f.status === 'live').length;
-  const upcoming = fixtures.filter(f => f.status === 'scheduled').slice(0, 3);
-  const recent = fixtures.filter(f => f.status === 'completed').slice(0, 3);
-  return (
-    <div className="p-4 pb-24 space-y-4">
-      <div className="bg-gradient-to-br from-kdpl-green/20 to-kdpl-neon/10 border border-kdpl-neon/20 rounded-xl p-4">
-        <h2 className="text-kdpl-neon font-oswald font-bold text-xl">{tournament?.name || 'KDPL'}</h2>
-        <p className="text-kdpl-muted text-xs mt-1">{tournament?.format} • {teams.length} teams • {players.length} players</p>
-      </div>
-      {liveMatch && liveMatch.status === 'live' && (
-        <button onClick={() => navigate('live')} className="w-full bg-red-500/10 border border-red-500/30 rounded-xl p-3 text-left">
-          <div className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" /><span className="text-red-400 text-xs font-bold">LIVE NOW</span></div>
-          <div className="text-kdpl-text text-sm mt-1">{liveMatch.innings1.runs}/{liveMatch.innings1.wickets} ({liveMatch.innings1.overs}.{liveMatch.innings1.balls})</div>
-        </button>
-      )}
-      <div className="grid grid-cols-3 gap-2">
-        <button onClick={() => navigate('teams')} className="bg-kdpl-card border border-kdpl-border rounded-xl p-3 text-center"><div className="text-kdpl-neon text-lg font-bold">{teams.length}</div><div className="text-kdpl-muted text-[10px]">Teams</div></button>
-        <button onClick={() => navigate('fixtures')} className="bg-kdpl-card border border-kdpl-border rounded-xl p-3 text-center"><div className="text-kdpl-neon text-lg font-bold">{fixtures.length}</div><div className="text-kdpl-muted text-[10px]">Matches</div></button>
-        <button onClick={() => navigate('standings')} className="bg-kdpl-card border border-kdpl-border rounded-xl p-3 text-center"><div className="text-kdpl-neon text-lg font-bold">{liveCount}</div><div className="text-kdpl-muted text-[10px]">Live</div></button>
-      </div>
-      {upcoming.length > 0 && (
-        <div className="space-y-2">
-          <h3 className="text-kdpl-text text-sm font-semibold">Upcoming</h3>
-          {upcoming.map(f => {
-            const tA = teams.find(t => t.id === f.teamAId); const tB = teams.find(t => t.id === f.teamBId);
-            return <div key={f.id} className="bg-kdpl-card border border-kdpl-border rounded-xl p-3 text-xs text-kdpl-text">{tA?.shortName} vs {tB?.shortName} <span className="text-kdpl-muted">• {f.date || 'TBD'}</span></div>;
-          })}
-        </div>
-      )}
-    </div>
-  );
-}
+
 
 // ─── FIXTURES PAGE ───
 export function FixturesPage({ store }: { store: KDPLStore }) {

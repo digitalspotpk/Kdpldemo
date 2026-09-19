@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useKDPLStore } from './store/useKDPLStore';
 import { TopBar, BottomNav, LiveMatchFloatingWidget, PullToRefresh, SubNav, SplashScreen } from './components/layout';
-import { Dashboard, FixturesPage, LiveScorePage, VenuesPage, SeriesDetailPage, TossPage, SquadPage, ShufflePage, AnalyticsPage, FacebookLivePage, NotificationsPage, UserManagementPage, DataManagementPage, AdsManagerPage, GlobalArchivePage, SetupPage, TournamentsListPage, CreateTournamentPage, OrganizerAuthPage } from './components/pages/OtherPages';
+import { FixturesPage, LiveScorePage, VenuesPage, SeriesDetailPage, TossPage, SquadPage, ShufflePage, AnalyticsPage, FacebookLivePage, NotificationsPage, UserManagementPage, DataManagementPage, AdsManagerPage, GlobalArchivePage, SetupPage, TournamentsListPage, CreateTournamentPage, OrganizerAuthPage } from './components/pages/OtherPages';
 import ScorecardPage, { TeamsPage, PlayersPage, StandingsPage } from './components/pages/MainPages';
+import Dashboard from './components/pages/Dashboard';
 import ScorerPage from './components/pages/ScorerPage';
 import SeriesPage from './components/pages/SeriesPage';
 import TournamentConfigPage from './components/pages/TournamentConfigPage';
